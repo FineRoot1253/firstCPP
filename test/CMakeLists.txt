@@ -1,15 +1,9 @@
+project(test)
 include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
+add_subdirectory(ch1)
+add_subdirectory(ch2)
+add_subdirectory(ch3)
+add_subdirectory(ch4)
+
 enable_testing()
-
-add_executable(
-        hello_test
-        ./ch1/hello_test.cc
-)
-target_link_libraries(
-        hello_test
-        GTest::gtest_main
-)
-
-include(GoogleTest)
-gtest_discover_tests(hello_test)
