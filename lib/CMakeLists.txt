@@ -1,0 +1,10 @@
+add_library(DynamicArray dto/DynamicArray.cpp)
+add_library(Line dto/Line.cpp)
+add_library(Point dto/Point.cpp)
+
+target_include_directories(DynamicArray PUBLIC ${CMAKE_SOURCE_DIR}/include)
+target_include_directories(Line PUBLIC ${CMAKE_SOURCE_DIR}/include)
+target_include_directories(Point PUBLIC ${CMAKE_SOURCE_DIR}/include)
+target_link_libraries(Line PUBLIC Point)
+target_link_libraries(DynamicArray PUBLIC Line Point)
+#add_dependencies(DynamicArray Line Point)
