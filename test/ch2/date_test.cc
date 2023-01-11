@@ -12,8 +12,8 @@ protected:
     }
 public:
     DateFixture(): Test(){
-        date = new Date();
-        date->setDate(2012,1,31);
+        date = new Date(2012,1,31);
+        //date->setDate(2012,1,31);
     }
     virtual  ~DateFixture(){
         delete date;
@@ -23,8 +23,8 @@ public:
 
 TEST_F(DateFixture, setDate){
     Date dummy = *date;
-    Date * compareTarget = new Date();
-    compareTarget->setDate(2012,1,31);
+    Date * compareTarget = new Date(2012,1,31);
+    //compareTarget->setDate(2012,1,31);
     EXPECT_EQ(dummy.getDay(), compareTarget->getDay());
     EXPECT_EQ(dummy.getMonth(), compareTarget->getMonth());
     EXPECT_EQ(dummy.getYear(), compareTarget->getYear());
@@ -54,4 +54,27 @@ TEST_F(DateFixture, addYearCheck){
     Date dummy = *date;
     dummy.addYear(1);
     EXPECT_EQ(dummy.getYear(), 2013);
+}
+
+TEST_F(DateFixture, implicitInitializeCheck){
+    Date dummy = *date;
+    Date dummy1 = Date(2012, 1, 31);
+    EXPECT_EQ(dummy.getYear(), dummy1.getYear());
+    EXPECT_EQ(dummy.getMonth(), dummy1.getMonth());
+    EXPECT_EQ(dummy.getDay(), dummy1.getDay());
+}
+
+TEST_F(DateFixture, explicitInitializeCheck){
+    Date dummy = *date;
+    Date dummy1(2012, 1, 31);
+    EXPECT_EQ(dummy.getYear(), dummy1.getYear());
+    EXPECT_EQ(dummy.getMonth(), dummy1.getMonth());
+    EXPECT_EQ(dummy.getDay(), dummy1.getDay());
+}
+
+TEST_F(DateFixture, defaultInitializeCheck){
+    Date dummy;
+    EXPECT_EQ(dummy.getYear(), 1997);
+    EXPECT_EQ(dummy.getMonth(), 11);
+    EXPECT_EQ(dummy.getDay(), 29);
 }
