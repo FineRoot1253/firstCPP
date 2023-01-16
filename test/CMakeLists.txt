@@ -4,5 +4,7 @@ add_subdirectory(ch1)
 add_subdirectory(ch2)
 add_subdirectory(ch3)
 add_subdirectory(ch4)
+add_subdirectory(enthusiasm/banking/command/domian/repository)
+add_subdirectory(enthusiasm/banking/command/service)
 
 enable_testing()
