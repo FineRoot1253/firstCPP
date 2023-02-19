@@ -6,18 +6,23 @@
 #define FIRSTCPP_BANKSERVICE_H
 
 #include "enthusiasm/banking/command/domain/repository/AccountRepository.h"
+#include "enthusiasm/banking/command/domain/dto/MoneyInputDto.h"
+#include "enthusiasm/banking/common/service.h"
 
-class BankService {
+class BankService : public Service{
 private:
     AccountRepository* accountRepository;
+    BankService();
 public:
-    BankService(AccountRepository accountRepository);
+    explicit BankService(const AccountRepository& accountRepository);
+    BankService(const BankService& bankService);
     ~BankService();
 
-    Error makeAccount(const Account account);
-    Error  depositMoney(const long accId, const int money);
-    Error withdrawMoney(const long accId, const int money);
-    Account* findAll();
+    Error makeAccount(const AccountInputDto& accountInputDto);
+    Error depositMoney(const MoneyInputDto& moneyInputDto);
+    Error withdrawMoney(const MoneyInputDto& moneyInputDto);
+    const HGrowableList<Account>& findAll() const;
+    BaseReturnDto<Account> findById(const long& accountID) const;
 };
 
 

@@ -4,11 +4,8 @@
 #include "enthusiasm/class/FruitBuyer.h"
 
 int main(){
-    FruitSeller seller;
-    FruitBuyer buyer;
-
-    seller.init(1000, 20, 0);
-    buyer.init(5000);
+    FruitSeller seller(1000, 20, 0);
+    FruitBuyer buyer(5000);
 
     buyer.buyApples(seller, 2000);
 

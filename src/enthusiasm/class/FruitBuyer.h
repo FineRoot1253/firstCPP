@@ -13,8 +13,12 @@ private:
     int myMoney;
     int numOfApples;
 public:
-    void init(int money);
+    FruitBuyer(int money)
+            : myMoney(money), numOfApples(0) {
+    };
+
     void buyApples(FruitSeller &seller, int money);
+
     void showBuyResult();
 };
 

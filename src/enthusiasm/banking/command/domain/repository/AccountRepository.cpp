@@ -3,60 +3,67 @@
 //
 #include "AccountRepository.h"
 #include "enthusiasm/common/Error.h"
-#include <cstring>
+#include "enthusiasm/banking/common/constants.h"
+#include "enthusiasm/banking/command/domain/dto/AccountInputDto.h"
 #include <iostream>
 
-//AccountRepository::AccountRepository(const Account *accArr, const int &accNum) {
-//    this->accArr = accArr;
-//}
-
-AccountRepository::AccountRepository(const Account *accArr, const int &accNum) {
-    std::copy(accArr, accArr + accNum, this->accArr);
-    this->accNum = accNum;
+AccountRepository::AccountRepository()
+: accNum(0)
+, accList(new HGrowableList<Account>()) {
+    accNum = 0;
 }
 
-BaseDto<Account> AccountRepository::findById(long accId) {
+AccountRepository::AccountRepository(const AccountRepository &accountRepository):accNum(accountRepository.accNum), accList(accountRepository.accList){
+    accList = new HGrowableList<Account>();
+    accList->addArray(accountRepository.accList->getAll(),accNum);
+}
+
+AccountRepository::AccountRepository(const Account **accArr, const int &accNum)
+        : accNum(accNum), accList(new HGrowableList<Account>()){
+    accList->addArray(accArr,accNum);
+}
+
+AccountRepository::~AccountRepository() {
+    delete accList;
+}
+
+BaseReturnDto<Account> AccountRepository::findById(const long& accId) const {
     int i = 0;
-    while (i < 100) {
-        if (accArr[i].accId == accId) {
-            return BaseDto<Account>{accArr[i], Error{false, ""}};
+    while (i < accNum) {
+        if (accList->get(i).getAccId() == accId) {
+            return BaseReturnDto<Account>{accList->get(i), Error{}};
         }
         i++;
     }
-    return BaseDto<Account>{Account{}, Error{true, "No Items"}};
+    return BaseReturnDto<Account>{Account{}, Error{true, constants::err_kr::ERR_MSG_ACCOUNT_ID_NOT_FOUND}};
 }
 
-Account *AccountRepository::findAll() {
-    return accArr;
+const HGrowableList<Account>& AccountRepository::findAll() const {
+    return *accList;
 }
 
-BaseDto<int> AccountRepository::getTotalCounts() {
-    return BaseDto<int>{accNum,Error{false,""}};
+BaseReturnDto<int> AccountRepository::getTotalCounts() const {
+    return BaseReturnDto<int>{accNum, Error{false, constants::err_kr::ERR_MSG_NO_ERROR}};
 }
 
-Error AccountRepository::saveAccount(Account account) {
+Error AccountRepository::saveAccount(const AccountInputDto& accountInputDto) {
     for (int i = 0; i < accNum; ++i) {
-        if (accArr[i].accId == account.accId) {
-            return Error{true, "중복 계정 id"};
+        if (accList->get(i).getAccId() == accountInputDto.getAccountID()) {
+            return Error{true, constants::err_kr::ERR_MSG_ACCOUNT_ID_DUPLICATED};
         }
     }
-    accArr[accNum].accId = account.accId;
-    strcpy(accArr[accNum].cusName, account.cusName);
-    accArr[accNum].balance = account.balance;
-    accNum ++;
-    return Error{false, ""};
+    accList->add(Account(accountInputDto.getAccountID(), accountInputDto.getMoney(), accountInputDto.getCustomerName()));
+    accNum++;
+    return Error{};
 }
 
-Error AccountRepository::saveBalance(Account account) {
+Error AccountRepository::saveBalance(const BalanceDto& balanceDto) {
     for (int i = 0; i < accNum; ++i) {
-        if (accArr[i].accId == account.accId) {
-            if (account.balance < 0 && (-1 * account.balance) > accArr[i].balance) {
-                return Error{true, "잔액부족"};
-            }
-            accArr[i].balance += account.balance;
-            return Error{false, ""};
+        if (accList->get(i).getAccId() == balanceDto.getAccId()) {
+            return accList->getForSave(i).save(balanceDto);
         }
     }
+    return Error{true, constants::err_kr::ERR_MSG_ACCOUNT_ID_NOT_FOUND};
 }
 
 

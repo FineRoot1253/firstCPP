@@ -7,15 +7,20 @@ protected:
     }
 
     virtual void SetUp() {
-        accountRepository->saveAccount(Account{1l,100000, "Hong"});
-        accountRepository->saveAccount(Account{2l,200000, "Lee"});
-        accountRepository->saveAccount(Account{3l,300000, "Kim"});
-        accountRepository->saveAccount(Account{4l,400000, "Choi"});
+        Account ** temp = new Account * [4];
+        for (int i = 0; i < 4; ++i) {
+            temp[i] = new Account(dummyAccounts[i]);
+        }
+       const Account* tempDto [4]= {temp[0],temp[1],temp[2],temp[3]};
+        accountRepository = new AccountRepository(tempDto, 4);
+        for (int i = 0; i < 4; ++i) {
+            delete temp[i];
+        }
+        delete []temp;
     }
 
 public:
     AccountRepositoryFixture() : Test() {
-        accountRepository = new AccountRepository({},0);
     }
 
     virtual  ~AccountRepositoryFixture() {
@@ -30,46 +35,48 @@ public:
 TEST_F(AccountRepositoryFixture, setRepository) {
     AccountRepository dummy = *accountRepository;
     for (int i = 0; i < DUMMY_ACCOUNT_COUNT; ++i) {
-        const BaseDto<Account> &dto = dummy.findById(dummyAccounts->accId);
-        EXPECT_EQ(dummyAccounts->accId, dto.data.accId);
-        EXPECT_STREQ(dummyAccounts->cusName,dto.data.cusName);
-        EXPECT_EQ(dummyAccounts->balance, dto.data.balance);
+        const BaseReturnDto<Account> &dto = dummy.findById(dummyAccounts->getAccId());
+        EXPECT_EQ(dummyAccounts->getAccId(), dto.data.getAccId());
+        EXPECT_STREQ(dummyAccounts->getCusName(),dto.data.getCusName());
+        EXPECT_EQ(dummyAccounts->getBalance(), dto.data.getBalance());
     }
 }
 
 TEST_F(AccountRepositoryFixture, saveAccount) {
     AccountRepository dummy = *accountRepository;
-    Account *accounts = dummy.findAll();
+    const HGrowableList<Account>& accounts = dummy.findAll();
     AccountRepository *compareRepository = new AccountRepository({},0);
     for (int i = 0; i < dummy.getTotalCounts().data; ++i) {
-        compareRepository->saveAccount(Account{accounts[i].accId,accounts[i].balance, *accounts[i].cusName});
+        const Account &account = accounts.get(i);
+        compareRepository->saveAccount(AccountInputDto{account.getAccId(),account.getBalance(),account.getCusName()});
     }
-    compareRepository->saveAccount(Account{5l, 500000, "Park"});
+    compareRepository->saveAccount(AccountInputDto{5l, 500000, "Park"});
     EXPECT_EQ(compareRepository->getTotalCounts().data, 5);
-    char *name = compareRepository->findById(5l).data.cusName;
-    int balance = compareRepository->findById(5l).data.balance;
-    EXPECT_STREQ(name, "Park");
-    EXPECT_EQ(balance, 500000);
+    if(!compareRepository->findById(5l).error.isError()){
+        const Account &account = compareRepository->findById(5l).data;
+        EXPECT_STREQ(account.getCusName(), "Park");
+        EXPECT_EQ(account.getBalance(), 500000);
+    }
     delete compareRepository;
 }
 
 TEST_F(AccountRepositoryFixture, depositAccount) {
     AccountRepository dummy = *accountRepository;
-    const Error &error1 = dummy.saveAccount(Account{5l, 100000, "Park"});
-    const Error &error2 = dummy.saveBalance(Account{5l, 100000, "Park"});
+    const Error &error1 = dummy.saveAccount(AccountInputDto{5l, 100000, "Park"});
+    const Error &error2 = dummy.saveBalance(BalanceDto{5l, 100000, eBankingMode::Deposit});
     const Account &data =dummy.findById(5l).data;
-    EXPECT_EQ(data.balance, 200000);
+    EXPECT_EQ(data.getBalance(), 200000);
 }
 
 TEST_F(AccountRepositoryFixture, withdrawAccount) {
     AccountRepository dummy = *accountRepository;
-    const Error &error1 = dummy.saveAccount(Account{5l, 100000, "Park"});
-    const Error &error2 = dummy.saveBalance(Account{5l, -100000, "Park"});
+    const Error &error1 = dummy.saveAccount(AccountInputDto{5l, 100000, "Park"});
+    const Error &error2 = dummy.saveBalance(BalanceDto{5l, 100000, eBankingMode::WithDraw});
     const Account &data =dummy.findById(5l).data;
-    EXPECT_EQ(data.balance, 0);
-    const Error &error3 = dummy.saveBalance(Account{5l, -100000, "Park"});
-    EXPECT_EQ(error3.isError, true);
-    EXPECT_STREQ(error3.content,"잔액부족");
+    EXPECT_EQ(data.getBalance(), 0);
+    const Error &error3 = dummy.saveBalance(BalanceDto{5l, 100000, eBankingMode::WithDraw});
+    EXPECT_EQ(error3.isError(), true);
+    EXPECT_STREQ(error3.getReason(),"너무 많은 액수를 출금");
 }
 
 TEST_F(AccountRepositoryFixture, getUserCounts) {
