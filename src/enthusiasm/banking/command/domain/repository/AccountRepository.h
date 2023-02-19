@@ -5,22 +5,28 @@
 #ifndef FIRSTCPP_ACCOUNTREPOSITORY_H
 #define FIRSTCPP_ACCOUNTREPOSITORY_H
 
-#include "enthusiasm/common/Account.h"
-#include "enthusiasm/banking/command/domain/dto/BaseDto.h"
+#include "enthusiasm/banking/command/domain/entity/Account.h"
+#include "enthusiasm/banking/command/domain/dto/BaseReturnDto.h"
+#include "enthusiasm/banking/common/HGrowableList.h"
+#include "enthusiasm/banking/command/domain/dto/AccountInputDto.h"
 
 class AccountRepository {
 private:
-    Account accArr[100];
+    HGrowableList<Account> *accList;
     int accNum = 0;
 public:
-    AccountRepository(const Account accArr[100], const int &accNum);
-    BaseDto<Account> findById(const long accId);
-    Account* findAll();
-    BaseDto<int> getTotalCounts();
+    AccountRepository();
+    AccountRepository(const Account **accArr, const int &accNum);
+    AccountRepository(const AccountRepository& accountRepository);
+    ~AccountRepository();
 
-    Error saveAccount(Account account);
+    BaseReturnDto<Account> findById(const long& accId) const;
+    const HGrowableList<Account>& findAll() const;
+    BaseReturnDto<int> getTotalCounts() const;
 
-    Error saveBalance(Account account);
+    Error saveAccount(const AccountInputDto& accountInputDto);
+
+    Error saveBalance(const BalanceDto& balanceDto);
 };
 
 #endif //FIRSTCPP_ACCOUNTREPOSITORY_H

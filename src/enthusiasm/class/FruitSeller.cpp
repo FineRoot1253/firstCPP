@@ -4,11 +4,6 @@
 
 #include "FruitSeller.h"
 
-void FruitSeller::init(int price, int num, int money) {
-    applePrice = price;
-    numOfApples = num;
-    myMoney = money;
-}
 
 int FruitSeller::saleApples(int money) {
     int num = money/applePrice;
@@ -17,7 +12,7 @@ int FruitSeller::saleApples(int money) {
     return num;
 }
 
-void FruitSeller::showSalesResult() {
+void FruitSeller::showSalesResult() const {
     std::cout<<"남은 사과: "<< numOfApples <<std::endl;
     std::cout<<"판매 수익: "<< myMoney <<std::endl<<std::endl;
 }

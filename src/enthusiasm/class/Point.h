@@ -12,7 +12,7 @@ private:
     int x;
     int y;
 public:
-    bool init(int xpos, int ypos);
+    Point(int xpos, int ypos);
     int GetX() const;
     int GetY() const;
     bool SetX(int xpos);

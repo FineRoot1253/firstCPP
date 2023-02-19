@@ -3,41 +3,49 @@
 //
 
 #include "BankService.h"
+#include "enthusiasm/banking/command/domain/dto/MoneyInputDto.h"
 
-BankService::BankService(AccountRepository accountRepository) {
-    const BaseDto<int> &totalCountsDto = accountRepository.getTotalCounts();
-    Account *allData = accountRepository.findAll();
-    if(totalCountsDto.error.isError) {
-        this->accountRepository = new AccountRepository({}, 0);
-    }else{
-        this->accountRepository = new AccountRepository(allData, totalCountsDto.data);
-    }
+BankService::BankService() {
+
+}
+
+BankService::BankService(const AccountRepository& accountRepository)
+: accountRepository(new AccountRepository(accountRepository)) {
+}
+
+BankService::BankService(const BankService & bankService) :accountRepository(new AccountRepository(*bankService.accountRepository)){
 }
 
 BankService::~BankService() {
-    delete accountRepository;
+    if(accountRepository!= nullptr){
+        delete accountRepository;
+    }
 }
 
-Account *BankService::findAll() {
+const HGrowableList<Account>& BankService::findAll() const {
     return accountRepository->findAll();
 }
 
-Error BankService::makeAccount(Account account) {
-    return accountRepository->saveAccount(account);
+Error BankService::makeAccount(const AccountInputDto& accountInputDto) {
+    return accountRepository->saveAccount(accountInputDto);
 }
 
-Error BankService::depositMoney(const long accId, const int money) {
-    if (money <= 0){
-        return Error{true, "0보다 작거나 같은 수"};
+Error BankService::depositMoney(const MoneyInputDto& moneyInputDto) {
+    if (moneyInputDto.getMoney() <= 0){
+        return Error{true, constants::err_kr::ERR_MSG_SAVE_INPUT_ERROR_LE};
     }
-    return accountRepository->saveBalance(Account{accId, money, ""});
+    return accountRepository->saveBalance(BalanceDto{moneyInputDto.getAccountID(), moneyInputDto.getMoney(), eBankingMode::Deposit});
 }
 
-Error BankService::withdrawMoney(const long accId, const int money) {
-    if (money >= 0){
-        return Error{true, "0보다 크거나 같은 수"};
+Error BankService::withdrawMoney(const MoneyInputDto& moneyInputDto) {
+    if (moneyInputDto.getMoney() <= 0){
+        return Error{true, constants::err_kr::ERR_MSG_SAVE_INPUT_ERROR_LE};
     }
-    return accountRepository->saveBalance(Account{accId, money, ""});
+    return accountRepository->saveBalance(BalanceDto{moneyInputDto.getAccountID(), moneyInputDto.getMoney(), eBankingMode::WithDraw});
+}
+
+BaseReturnDto<Account> BankService::findById(const long& accountID) const {
+    return accountRepository->findById(accountID);
 }
 
 

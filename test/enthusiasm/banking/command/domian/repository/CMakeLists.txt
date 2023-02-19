@@ -6,6 +6,7 @@ add_executable(
 target_link_libraries(
         AccountRepository_test
         AccountRepository
+        Account_Entity
         GTest::gtest_main
 )
 

@@ -3,15 +3,12 @@
 //
 
 #include "Rectangle.h"
-bool Rectangle::init(const Point &highLeft, const Point &lowRight) {
-    if(highLeft.GetX()>lowRight.GetX() ||highLeft.GetY()>lowRight.GetY()){
-        std::cout<<"잘못된 위치정보 전달"<<std::endl;
-        return false;
-    }
-    this->highLeft = highLeft;
-    this->lowRight = lowRight;
-    return true;
+
+Rectangle::Rectangle(const int &xpos1, const int &ypos1, const int &xpos2, const int &ypos2)
+: highLeft(xpos1, ypos1), lowRight(xpos2, ypos2){
+
 }
+
 
 void Rectangle::showRecInfo() {
     std::cout<<"좌 상단: "<<"["<<highLeft.GetX()<<", ";

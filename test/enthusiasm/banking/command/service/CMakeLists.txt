@@ -7,7 +7,13 @@ target_link_libraries(
         BankService_test
         BankService
         AccountRepository
-        GTest::gtest_main
+        Account_Entity
+)
+
+target_link_libraries(
+        BankService_test
+        gtest
+        gtest_main
 )
 
 

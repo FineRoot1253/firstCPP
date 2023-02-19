@@ -4,14 +4,9 @@
 
 #include "Point.h"
 
-bool Point::init(int xpos, int ypos) {
-    if (xpos < 0 || ypos < 0) {
-        std::cout << "벗어난 범위의 값 전달" << std::endl;
-        return false;
-    }
+Point::Point(int xpos, int ypos) {
     x = xpos;
     y = ypos;
-    return true;
 }
 
 int Point::GetX() const {

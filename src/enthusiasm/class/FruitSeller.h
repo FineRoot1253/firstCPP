@@ -9,13 +9,19 @@
 
 class FruitSeller {
 private:
-    int applePrice;
+    const int applePrice;
     int numOfApples;
     int myMoney;
 public:
-    void init(int price, int num, int money);
+    FruitSeller(int price, int num, int money)
+            : applePrice(price)
+            , numOfApples(num)
+            , myMoney(money) {
+    };
+
     int saleApples(int money);
-    void showSalesResult();
+
+    void showSalesResult() const;
 };
 
 

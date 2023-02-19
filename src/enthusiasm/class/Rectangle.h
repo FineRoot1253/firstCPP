@@ -13,7 +13,7 @@ private:
     Point highLeft;
     Point lowRight;
 public:
-    bool init(const Point &highLeft, const Point &lowRight);
+    Rectangle(const int &xpos1, const int &ypos1, const int &xpos2, const int &ypos2);
 
     void showRecInfo();
 };
