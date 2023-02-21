@@ -10,6 +10,13 @@ add_executable(enthusiasm_Destructor_run enthusiasm/class/Destructor.cpp)
 add_executable(enthusiasm_ObjArr_run enthusiasm/class/ObjArr.cpp)
 add_executable(enthusiasm_ObjPtrArr_run enthusiasm/class/ObjPtrArr.cpp)
 add_executable(enthusiasm_SelfRef_run enthusiasm/class/SelfRef.cpp)
+add_executable(enthusiasm_ClassInit_run enthusiasm/class/ClassInit.cpp)
+add_executable(enthusiasm_ShalloCopyError_run enthusiasm/class/ShalloCopyError.cpp)
+add_executable(enthusiasm_PassObjectCopyConstructor_run enthusiasm/class/PassObjectCopyConstructor.cpp)
+add_executable(enthusiasm_ReturnObjectCopyConstructor_run enthusiasm/class/ReturnObjectCopyConstructor.cpp)
+add_executable(enthusiasm_IKnowTempObject_run enthusiasm/class/IKnowTempObject.cpp)
+add_executable(enthusiasm_ReturnObjectDeadTime_run enthusiasm/class/ReturnObjectDeadTime.cpp)
+
 add_executable(enthusiasm_Banking_run enthusiasm/banking/banking.cpp)
 
 target_link_libraries(
