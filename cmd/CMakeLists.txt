@@ -17,6 +17,9 @@ add_executable(enthusiasm_ReturnObjectCopyConstructor_run enthusiasm/class/Retur
 add_executable(enthusiasm_IKnowTempObject_run enthusiasm/class/IKnowTempObject.cpp)
 add_executable(enthusiasm_ReturnObjectDeadTime_run enthusiasm/class/ReturnObjectDeadTime.cpp)
 
+add_executable(enthusiasm_ConstObject_run enthusiasm/friend/ConstObject.cpp)
+add_executable(enthusiasm_ConstOverloading_run enthusiasm/friend/ConstOverloading.cpp)
+
 add_executable(enthusiasm_Banking_run enthusiasm/banking/banking.cpp)
 
 target_link_libraries(
@@ -92,3 +95,13 @@ target_link_libraries(
         WithdrawForm_ViewModel
         UserListForm_ViewModel
 )
+
+add_executable(enthusiasm_MyFriendClass_run enthusiasm/friend/MyFriendClass.cpp)
+add_executable(enthusiasm_MyFriendFunction_run enthusiasm/friend/MyFriendFunction.cpp)
+add_executable(enthusiasm_CComStatic_run enthusiasm/friend/CComStatic.cpp enthusiasm/friend/CComStatic.cpp)
+add_executable(enthusiasm_NeedGlobal_run enthusiasm/friend/NeedGlobal.cpp)
+add_executable(enthusiasm_StaticMember_run enthusiasm/friend/StaticMember.cpp)
+add_executable(enthusiasm_PublicStaticMember_run enthusiasm/friend/PublicStaticMember.cpp)
+add_executable(enthusiasm_StaticMemberFunction_run enthusiasm/friend/StaticMemberFunction.cpp)
+add_executable(enthusiasm_ConstStaticMember_run enthusiasm/friend/ConstStaticMember.cpp)
+add_executable(enthusiasm_Mutable_run enthusiasm/friend/Mutable.cpp)
