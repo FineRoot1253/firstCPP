@@ -19,6 +19,6 @@ int main(){
 }\n
 "
 
-echo "$headerFileContents" > ./src/enthusiasm/$parrentsDir/$fileName.h
-echo "$cmdFileContents" > ./cmd/enthusiasm/$parrentsDir/$fileName.cpp
+echo "$headerFileContents" > ./src/enthusiasm/$parrentsDir/$fileName.h && \
+echo "$cmdFileContents" > ./cmd/enthusiasm/$parrentsDir/$fileName.cpp && \
 echo "add_executable(enthusiasm_${className}_run enthusiasm/${parrentsDir}/${className}.cpp)" >> ./cmd/CMakeLists.txt
