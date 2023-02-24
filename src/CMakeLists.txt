@@ -58,5 +58,6 @@ add_library(Constructor_1 STATIC enthusiasm/class/Constructor_1.cpp)
 add_library(Destructor STATIC enthusiasm/class/Destructor.cpp)
 add_library(ObjArr STATIC enthusiasm/class/ObjArr.cpp)
 add_library(SelfRef STATIC enthusiasm/class/SelfRef.cpp)
-
+#add_library(PointTemplate STATIC enthusiasm/template/PointTemplate.cpp)
+#add_library(Point_Temp STATIC enthusiasm/template/Point.cpp)
 #add_dependencies(Geometry DynamicArray Line Point)
