@@ -4,22 +4,28 @@
 #include "Account.h"
 #include "enthusiasm/banking/common/constants.h"
 
-Account::Account():accId(0l), balance(0),cusName(nullptr) {
-    cusName = new char[std::strlen(constants::utils::TXT_DEFAULT)+1];
+Account::Account()
+        : accId(0l)
+        , balance(0)
+        , cusName(nullptr) {
+    cusName = new char[std::strlen(constants::utils::TXT_DEFAULT) + 1];
     std::strcpy(this->cusName, constants::utils::TXT_DEFAULT);
 }
 
-Account::Account(const Account &account):accId(account.accId), balance(account.balance) , cusName(nullptr){
-    if(account.cusName != nullptr){
-        cusName = new char[strlen(account.cusName)+1];
+Account::Account(const Account &account)
+        : accId(account.accId)
+        , balance(account.balance)
+        , cusName(nullptr) {
+    if (account.cusName != nullptr) {
+        cusName = new char[strlen(account.cusName) + 1];
         strcpy(this->cusName, account.cusName);
     }
 }
 
 Account::Account(long accId, int balance, const char *cusName)
-: accId(accId)
-, balance(balance){
-    this->cusName = new char[strlen(cusName)+1];
+        : accId(accId)
+        , balance(balance) {
+    this->cusName = new char[strlen(cusName) + 1];
     strcpy(this->cusName, cusName);
 }
 
@@ -39,29 +45,31 @@ char *Account::getCusName() const {
     return cusName;
 }
 
+
+
 void Account::showAccInfo() const {
-    std::cout<<"계좌ID: "<<accId<<std::endl;
-    std::cout<<"이 름: "<<cusName<<std::endl;
-    std::cout<<"잔 액: "<<balance<<std::endl;
+    std::cout << "계좌ID: " << accId << std::endl;
+    std::cout << "이 름: " << cusName << std::endl;
+    std::cout << "잔 액: " << balance << std::endl;
 }
 
 Error Account::deposit(int money) {
-    if (money <= 0){
+    if (money <= 0) {
         return Error{true, constants::err_kr::ERR_MSG_SAVE_INPUT_ERROR_LE};
     }
-    balance+=money;
+    balance += money;
     return Error{};
 }
 
 BaseReturnDto<int> Account::withdraw(int money) {
-    if (money > balance){
+    if (money > balance) {
         return BaseReturnDto<int>{0, Error{true, constants::err_kr::EX_MSG_WITHDRAW_OVER}};
     }
-    balance-=money;
+    balance -= money;
     return BaseReturnDto<int>{balance, Error{}};
 }
 
-Error Account::save(const BalanceDto& balanceDto) {
+Error Account::save(const BalanceDto &balanceDto) {
     switch (balanceDto.getCurrentMode()) {
         case eBankingMode::Deposit:
             return deposit(balanceDto.getBalance());
@@ -70,14 +78,14 @@ Error Account::save(const BalanceDto& balanceDto) {
         default:
             break;
     }
-    return Error{true,constants::err_kr::ERR_MSG_SAVE_FAILURE};
+    return Error{true, constants::err_kr::ERR_MSG_SAVE_FAILURE};
 }
 
-bool Account::isEqual(const Account &other) const{
+bool Account::isEqual(const Account &other) const {
     return other.getAccId() == accId;
 }
 
-bool Account::isNotEqual(const Account &other) const{
+bool Account::isNotEqual(const Account &other) const {
     return other.getAccId() != accId;
 }
 

@@ -7,6 +7,8 @@ target_link_libraries(
         AccountRepository_test
         AccountRepository
         Account_Entity
+        NormalAccount_Entity
+        HighCreditAccount_Entity
         GTest::gtest_main
 )
 

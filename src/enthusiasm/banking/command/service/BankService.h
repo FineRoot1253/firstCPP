@@ -21,8 +21,8 @@ public:
     Error makeAccount(const AccountInputDto& accountInputDto);
     Error depositMoney(const MoneyInputDto& moneyInputDto);
     Error withdrawMoney(const MoneyInputDto& moneyInputDto);
-    const HGrowableList<Account>& findAll() const;
-    BaseReturnDto<Account> findById(const long& accountID) const;
+    const HGrowableList<Account*>& findAll() const;
+    BaseReturnDto<Account*> findById(const long& accountID) const;
 };
 
 

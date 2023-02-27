@@ -8,13 +8,31 @@
 #include <math.h>
 #include <ios>
 #include "view_type.h"
+#include "Exception.h"
+#include "CreditGrade.h"
+#include "AccountType.h"
 
 namespace utils {
     constexpr int getIntDigitCounts(const int &input) {
-        if(input == 0){
+        if (input == 0) {
             return 1;
         }
         return floor(log10(input) + 1);
+    }
+
+    constexpr double getCreditRatio(CreditGrade creditGrade) {
+        switch (creditGrade) {
+            case CreditGrade::A:
+                return 0.07;
+            case CreditGrade::B:
+                return 0.04;
+            default:
+                return 0.01;
+        }
+    }
+
+    constexpr bool isValidCreditInput(const int &input) {
+        return input > 0 && input < 4; // 1 ~ 3
     }
 
     namespace Parser {
@@ -60,7 +78,7 @@ namespace utils {
                 return value;
             }
 
-            int toInteger()const{
+            int toInteger() const {
                 return std::atoi(this->value);
             }
         };
@@ -71,11 +89,11 @@ namespace utils {
         public:
             explicit BooleanToCharArray(const bool &value) {
                 int len;
-                if(value){
+                if (value) {
                     len = 5;
                     this->value = new char[len];
                     std::strcpy(this->value, "true");
-                }else{
+                } else {
                     len = 6;
                     this->value = new char[len];
                     std::strcpy(this->value, "false");
@@ -107,13 +125,56 @@ namespace utils {
             }
         };
 
-        constexpr long viewTypeToConstLong(eViewType viewType){
+        constexpr long viewTypeToConstLong(eViewType viewType) {
             return static_cast<const long>(viewType);
         };
 
-        constexpr eViewType constLongToViewType(const long& value){
+        constexpr eViewType constLongToViewType(const long &value) {
             return static_cast<eViewType>(value);
         };
+
+        constexpr int accountTypeToInt(const AccountType& accountType){
+            switch(accountType){
+                case AccountType::NORMAL:
+                    return 1;
+                default:
+                    return 2;
+            }
+        }
+
+        constexpr int creditGradeToInt(const CreditGrade& creditGrade){
+            switch(creditGrade){
+                case CreditGrade::A:
+                    return 1;
+                case CreditGrade::B:
+                    return 2;
+                default:
+                    return 3;
+            }
+        }
+
+        constexpr char creditGradeToChar(const CreditGrade& creditGrade){
+            switch(creditGrade){
+                case CreditGrade::A:
+                    return 'A';
+                case CreditGrade::B:
+                    return 'B';
+                default:
+                    return 'C';
+            }
+        }
+
+        constexpr CreditGrade intToCreditGrade(const int& input) {
+            if (isValidCreditInput(input))
+                switch (input) {
+                    case 1:
+                        return CreditGrade::A;
+                    case 2:
+                        return CreditGrade::B;
+                    default:
+                        return CreditGrade::C;
+                }
+        }
     }
 
 }

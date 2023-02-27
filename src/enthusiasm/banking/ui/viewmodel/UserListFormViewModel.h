@@ -18,7 +18,7 @@ public:
     UserListFormViewModel(const ViewID& viewId, const EventProvider &eventViewModel, BankService* bankService);
     UserListFormViewModel(const UserListFormViewModel& userListFormViewModel);
 
-    const HGrowableList<Account>& getuserList();
+    const HGrowableList<Account*>& getuserList();
 };
 
 

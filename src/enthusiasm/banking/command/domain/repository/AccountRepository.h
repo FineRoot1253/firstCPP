@@ -12,16 +12,15 @@
 
 class AccountRepository {
 private:
-    HGrowableList<Account> *accList;
+    HGrowableList<Account*> accList;
     int accNum = 0;
 public:
     AccountRepository();
-    AccountRepository(const Account **accArr, const int &accNum);
+//    AccountRepository(Account* const**accArr, const int &accNum);
     AccountRepository(const AccountRepository& accountRepository);
-    ~AccountRepository();
 
-    BaseReturnDto<Account> findById(const long& accId) const;
-    const HGrowableList<Account>& findAll() const;
+    BaseReturnDto<Account*> findById(const long& accId) const;
+    const HGrowableList<Account*>& findAll() const;
     BaseReturnDto<int> getTotalCounts() const;
 
     Error saveAccount(const AccountInputDto& accountInputDto);

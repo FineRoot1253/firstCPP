@@ -12,8 +12,8 @@ WithdrawForm::WithdrawForm(const WithdrawFormViewModel& withdrawFormViewModel,
                            , View(viewModelEventListener){}
 
 void WithdrawForm::render() {
-    const Account result = withdrawFormViewModel.getMoneyInputResult();
-    if(!result.isEmpty()){
+    const BaseReturnDto<Account*> result = withdrawFormViewModel.getMoneyInputResult();
+    if(!result.error.isError()){
         buildResultForm();
     }else{
         buildRequestForm();
@@ -26,7 +26,7 @@ void WithdrawForm::buildRequestForm() {
 }
 
 void WithdrawForm::buildResultForm() {
-    std::cout<<withdrawFormViewModel.getMoneyInputResult();
+    std::cout<<*withdrawFormViewModel.getMoneyInputResult().data;
 }
 
 void WithdrawForm::dispose() {

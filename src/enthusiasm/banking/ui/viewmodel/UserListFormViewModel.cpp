@@ -14,6 +14,6 @@ UserListFormViewModel::UserListFormViewModel(const UserListFormViewModel &userLi
         , bankService(userListFormViewModel.bankService) {
 }
 
-const HGrowableList<Account> &UserListFormViewModel::getuserList() {
+const HGrowableList<Account*> &UserListFormViewModel::getuserList() {
     return bankService->findAll();
 }

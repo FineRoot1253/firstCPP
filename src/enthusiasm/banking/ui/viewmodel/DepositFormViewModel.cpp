@@ -28,16 +28,16 @@ void DepositFormViewModel::setMoneyInputDto() {
     EventProvider::notify();
 }
 
-const Account DepositFormViewModel::getMoneyInputResult() const {
+BaseReturnDto<Account*> DepositFormViewModel::getMoneyInputResult() const {
     if(moneyInputDto.getAccountID() != -1){
-        const BaseReturnDto<Account> &dto =bankService->findById(moneyInputDto.getAccountID());
+        const BaseReturnDto<Account*> &dto =bankService->findById(moneyInputDto.getAccountID());
         if(dto.error.isError()){
             throw AccountSystemException(dto.error.getReason());
         }
-        return dto.data;
+        return bankService->findById(moneyInputDto.getAccountID());
     }
 
-    return Account();
+    return BaseReturnDto<Account*>{nullptr, Error{true,constants::err_kr::EX_MSG_INITIALIZE_NOT_YET}};
 }
 
 void DepositFormViewModel::reset() {

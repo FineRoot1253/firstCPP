@@ -19,7 +19,6 @@ void MakeAccountForm::render() {
 }
 
 void MakeAccountForm::buildInputView() {
-    std::cout<<"[계좌개설]"<<std::endl;
     makeAccountFormViewModel.setAccount();
 }
 

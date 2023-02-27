@@ -17,6 +17,8 @@ target_include_directories(AccountRepository PUBLIC enthusiasm/common)
 add_library(BankService STATIC enthusiasm/banking/command/service/BankService.cpp)
 target_include_directories(BankService PUBLIC enthusiasm/common)
 add_library(Account_Entity STATIC enthusiasm/banking/command/domain/entity/Account.cpp enthusiasm/banking/command/domain/entity/Account.h)
+add_library(NormalAccount_Entity STATIC enthusiasm/banking/command/domain/entity/NormalAccount.cpp enthusiasm/banking/command/domain/entity/NormalAccount.h)
+add_library(HighCreditAccount_Entity STATIC enthusiasm/banking/command/domain/entity/HighCreditAccount.cpp enthusiasm/banking/command/domain/entity/HighCreditAccount.h)
 
 add_library(Event_Provider STATIC enthusiasm/banking/infra/EventProvider.cpp)
 add_library(ViewModelEventListener STATIC enthusiasm/banking/infra/ViewModelEventListener.cpp)

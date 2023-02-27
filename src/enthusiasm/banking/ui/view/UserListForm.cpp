@@ -9,8 +9,8 @@ UserListForm::UserListForm(const UserListFormViewModel& userListViewModel, const
 }
 
 void UserListForm::render() {
-    HGrowableList<Account> list = userListFormViewModel.getuserList();
+    HGrowableList<Account*> list = userListFormViewModel.getuserList();
     for (int i = 0; i < list.getSize(); ++i) {
-        std::cout<<list.get(i);
+        std::cout<<*list.get(i);
     }
 }
