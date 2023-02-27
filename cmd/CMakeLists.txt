@@ -82,6 +82,8 @@ target_link_libraries(
         AccountRepository
         BankService
         Account_Entity
+        NormalAccount_Entity
+        HighCreditAccount_Entity
         MainMenu
         MakeAccountForm
         DepositForm
@@ -105,7 +107,7 @@ add_executable(enthusiasm_PublicStaticMember_run enthusiasm/friend/PublicStaticM
 add_executable(enthusiasm_StaticMemberFunction_run enthusiasm/friend/StaticMemberFunction.cpp)
 add_executable(enthusiasm_ConstStaticMember_run enthusiasm/friend/ConstStaticMember.cpp)
 add_executable(enthusiasm_Mutable_run enthusiasm/friend/Mutable.cpp)
-add_executable(enthusiasm_EmployeeManager1_run enthusiasm/polymorphism/EmployeeManager1.cpp)
+add_executable(enthusiasm_EmployeeManager1_run enthusiasm/inheritance/EmployeeManager1.cpp)
 add_executable(enthusiasm_UnivStudentinheri_run enthusiasm/inheritance/UnivStudentinheri.cpp)
 add_executable(enthusiasm_DerivCreOrder_run enthusiasm/inheritance/DerivCreOrder.cpp)
 add_executable(enthusiasm_DerivDestOrder_run enthusiasm/inheritance/DerivDestOrder.cpp)
@@ -114,13 +116,13 @@ add_executable(enthusiasm_ProtectedHeri_run enthusiasm/inheritance/ProtectedHeri
 add_executable(enthusiasm_ISAInheritance_run enthusiasm/inheritance/ISAInheritance.cpp)
 add_executable(enthusiasm_HASInheritance_run enthusiasm/inheritance/HASInheritance.cpp)
 add_executable(enthusiasm_HASComposite_run enthusiasm/inheritance/HASComposite.cpp)
-#add_executable(enthusiasm_ObjectPointer_run enthusiasm/polymorphism/ObjectPointer.cpp)
-#add_executable(enthusiasm_EmployeeManager2_run enthusiasm/polymorphism/EmployeeManager2.cpp)
-#add_executable(enthusiasm_EmployeeManager3_run enthusiasm/polymorphism/EmployeeManager3.cpp)
-#add_executable(enthusiasm_FunctionOverride_run enthusiasm/polymorphism/FunctionOverride.cpp)
-#add_executable(enthusiasm_FunctionVirtualOverride_run enthusiasm/polymorphism/FunctionVirtualOverride.cpp)
-#add_executable(enthusiasm_EmployeeManager4_run enthusiasm/polymorphism/EmployeeManager4.cpp)
-#add_executable(enthusiasm_VirtualDestructor_run enthusiasm/polymorphism/VirtualDestructor.cpp)
+add_executable(enthusiasm_ObjectPointer_run enthusiasm/polymorphism/ObjectPointer.cpp)
+add_executable(enthusiasm_EmployeeManager2_run enthusiasm/polymorphism/EmployeeManager2.cpp)
+add_executable(enthusiasm_EmployeeManager3_run enthusiasm/polymorphism/EmployeeManager3.cpp)
+add_executable(enthusiasm_FunctionOverride_run enthusiasm/polymorphism/FunctionOverride.cpp)
+add_executable(enthusiasm_FunctionVirtualOverride_run enthusiasm/polymorphism/FunctionVirtualOverride.cpp)
+add_executable(enthusiasm_EmployeeManager4_run enthusiasm/polymorphism/EmployeeManager4.cpp)
+add_executable(enthusiasm_VirtualDestructor_run enthusiasm/polymorphism/VirtualDestructor.cpp)
 #add_executable(enthusiasm_RealObjUnder1_run enthusiasm/polymorphism/RealObjUnder1.cpp)
 #add_executable(enthusiasm_RealObjUnder2_run enthusiasm/polymorphism/RealObjUnder2.cpp)
 #add_executable(enthusiasm_VitualInternal_run enthusiasm/polymorphism/VitualInternal.cpp)
@@ -199,3 +201,4 @@ add_executable(enthusiasm_HASComposite_run enthusiasm/inheritance/HASComposite.c
 #add_executable(enthusiasm_PolymorphismDynamicCasting_run enthusiasm/casting/PolymorphismDynamicCasting.cpp)
 #add_executable(enthusiasm_PolymorphicStableCasting_run enthusiasm/casting/PolymorphicStableCasting.cpp)
 #add_executable(enthusiasm_DynamicBadCastRef_run enthusiasm/casting/DynamicBadCastRef.cpp)
+add_executable(enthusiasm_ReferenceAttribute_run enthusiasm/polymorphism/ReferenceAttribute.cpp)
