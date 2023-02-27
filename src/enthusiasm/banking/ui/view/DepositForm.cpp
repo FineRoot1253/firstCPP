@@ -11,8 +11,8 @@ DepositForm::DepositForm(const DepositFormViewModel& depositFormViewModel,
         : depositFormViewModel(depositFormViewModel), View(viewModelEventListener) {}
 
 void DepositForm::render() {
-    const Account result = depositFormViewModel.getMoneyInputResult();
-    if (!result.isEmpty()) {
+    const BaseReturnDto<Account*> result = depositFormViewModel.getMoneyInputResult();
+    if (!result.error.isError()) {
         buildResultForm();
     } else {
         buildRequestForm();
@@ -25,7 +25,7 @@ void DepositForm::buildRequestForm() {
 }
 
 void DepositForm::buildResultForm() {
-    std::cout<<depositFormViewModel.getMoneyInputResult();
+    std::cout<<*depositFormViewModel.getMoneyInputResult().data;
 }
 
 void DepositForm::dispose() {

@@ -25,15 +25,15 @@ void WithdrawFormViewModel::setMoneyInputDto() {
     EventProvider::notify();
 }
 
-const Account WithdrawFormViewModel::getMoneyInputResult() const {
+BaseReturnDto<Account*> WithdrawFormViewModel::getMoneyInputResult() const {
     if(moneyInputDto.getAccountID() != -1){
-        const BaseReturnDto<Account> &dto = bankService->findById(moneyInputDto.getAccountID());
+        const BaseReturnDto<Account*> &dto = bankService->findById(moneyInputDto.getAccountID());
         if(dto.error.isError()){
             throw AccountSystemException(dto.error.getReason());
         }
-        return dto.data;
+        return dto;
     }
-    return Account();
+    return BaseReturnDto<Account*>{nullptr, Error{true,constants::err_kr::EX_MSG_INITIALIZE_NOT_YET}};
 }
 
 void WithdrawFormViewModel::reset() {

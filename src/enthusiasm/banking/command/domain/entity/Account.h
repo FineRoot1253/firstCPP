@@ -10,6 +10,7 @@
 #include "enthusiasm/banking/command/domain/dto/BaseReturnDto.h"
 #include "enthusiasm/banking/command/domain/dto/BalanceDto.h"
 #include "enthusiasm/banking/common/equatable.h"
+#include "enthusiasm/banking/command/domain/dto/AccountInputDto.h"
 
 const int NAME_LEN = 20;
 
@@ -18,19 +19,20 @@ private:
     long accId;
     int balance;
     char *cusName;
-    Error deposit(int money);
-    BaseReturnDto<int> withdraw(int money);
+    virtual BaseReturnDto<int> withdraw(int money);
+protected:
+    virtual Error deposit(int money);
 public:
     Account();
     Account(long accId, int balance, const char *cusName);
     Account(const Account& account);
-    ~Account();
+    virtual ~Account();
 
-    long getAccId() const;
+    virtual long getAccId() const;
 
-    int getBalance() const;
+    virtual int getBalance() const;
 
-    char *getCusName() const;
+    virtual  char *getCusName() const;
 
     void showAccInfo() const;
 
@@ -40,16 +42,12 @@ public:
     bool isEmpty() const;
     bool isNotEmpty() const;
 
-    Error save(const BalanceDto& balanceDto);
+    virtual Error save(const BalanceDto& balanceDto);
+
+    virtual std::ostream& format(std::ostream& out) const = 0;
 
     friend std::ostream & operator << (std::ostream &out,  const Account &account){
-        out<<constants::txt_kr::TXT_INPUT_ACCOUNT_ID;
-        out << account.accId << std::endl;
-        out << constants::txt_kr::TXT_INPUT_CUSTOMER_NAME;
-        out << account.cusName << std::endl;
-        out<<constants::txt_kr::TXT_INPUT_LEFT;
-        out << account.balance << std::endl;
-        return out;
-    };
+        return account.format(out);
+    }
 };
 #endif //FIRSTCPP_ACCOUNT_H

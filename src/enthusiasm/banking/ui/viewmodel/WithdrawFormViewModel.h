@@ -10,6 +10,7 @@
 #include "enthusiasm/banking/command/service/BankService.h"
 #include "enthusiasm/banking/common/HGrowableList.h"
 #include "enthusiasm/banking/infra/includes/Listener.h"
+#include "enthusiasm/banking/command/domain/entity/NormalAccount.h"
 
 class WithdrawFormViewModel: public ViewModel {
 private:
@@ -22,7 +23,7 @@ public:
     void setMoneyInputDto();
     void reset();
 
-    const Account getMoneyInputResult()const;
+    BaseReturnDto<Account*> getMoneyInputResult()const;
 };
 
 

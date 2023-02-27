@@ -23,7 +23,7 @@ public:
 
     void setMoneyInputDto();
     void reset();
-    const Account getMoneyInputResult() const;
+    BaseReturnDto<Account*> getMoneyInputResult() const;
 
 
 };

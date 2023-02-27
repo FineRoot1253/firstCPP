@@ -26,6 +26,11 @@ namespace constants{
         constexpr char TXT_INPUT_DEPOSIT[] = "입금액: ";
         constexpr char TXT_INPUT_WITHDRAW[] = "출금액: ";
         constexpr char TXT_INPUT_LEFT[] = "잔액: ";
+        constexpr char TXT_INPUT_INTEREST[] = "이자율 (예: 1% = 1, 5% = 5): ";
+        constexpr char TXT_OUTPUT_INTEREST[] = "이자율: ";
+        constexpr char TXT_INPUT_ACCOUNT_TYPE_TITLE[] = "[계좌종류선택]";
+        constexpr char TXT_INPUT_ACCOUNT_TYPE[] = "1.보통예금계좌 2.신용신뢰계좌";
+        constexpr char TXT_INPUT_CREDIT_GRADE[] = "신용등급(1toA, 2toB, 3toC): ";
     }
 
     namespace ex_kr{
@@ -64,6 +69,8 @@ namespace constants{
         constexpr char ERR_MSG_SAVE_FAILURE[] = "Input 저장 실패";
 
         constexpr char EX_MSG_WITHDRAW_OVER[] = "너무 많은 액수를 출금";
+
+        constexpr char EX_MSG_INITIALIZE_NOT_YET[] = "아직 초기화가 덜 된 상태입니다.";
 
     }
 

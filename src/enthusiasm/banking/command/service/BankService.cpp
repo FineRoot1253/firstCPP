@@ -22,7 +22,7 @@ BankService::~BankService() {
     }
 }
 
-const HGrowableList<Account>& BankService::findAll() const {
+const HGrowableList<Account*>& BankService::findAll() const {
     return accountRepository->findAll();
 }
 
@@ -44,7 +44,7 @@ Error BankService::withdrawMoney(const MoneyInputDto& moneyInputDto) {
     return accountRepository->saveBalance(BalanceDto{moneyInputDto.getAccountID(), moneyInputDto.getMoney(), eBankingMode::WithDraw});
 }
 
-BaseReturnDto<Account> BankService::findById(const long& accountID) const {
+BaseReturnDto<Account*> BankService::findById(const long& accountID) const {
     return accountRepository->findById(accountID);
 }
 
