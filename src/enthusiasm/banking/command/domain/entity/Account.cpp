@@ -2,35 +2,29 @@
 // Created by 홍준근 on 2023/01/16.
 //
 #include "Account.h"
+
+#include <utility>
 #include "enthusiasm/banking/common/constants.h"
 
 Account::Account()
         : accId(0l)
         , balance(0)
-        , cusName(nullptr) {
-    cusName = new char[std::strlen(constants::utils::TXT_DEFAULT) + 1];
-    std::strcpy(this->cusName, constants::utils::TXT_DEFAULT);
+        , cusName(std::string()) {
 }
 
 Account::Account(const Account &account)
         : accId(account.accId)
         , balance(account.balance)
-        , cusName(nullptr) {
-    if (account.cusName != nullptr) {
-        cusName = new char[strlen(account.cusName) + 1];
-        strcpy(this->cusName, account.cusName);
-    }
+        , cusName(std::string()) {
 }
 
-Account::Account(long accId, int balance, const char *cusName)
+Account::Account(long accId, int balance, std::string  cusName)
         : accId(accId)
-        , balance(balance) {
-    this->cusName = new char[strlen(cusName) + 1];
-    strcpy(this->cusName, cusName);
+        , balance(balance)
+        , cusName(std::move(cusName)){
 }
 
 Account::~Account() {
-    delete[] cusName;
 }
 
 long Account::getAccId() const {
@@ -41,7 +35,7 @@ int Account::getBalance() const {
     return balance;
 }
 
-char *Account::getCusName() const {
+std::string Account::getCusName() const {
     return cusName;
 }
 
@@ -90,7 +84,7 @@ bool Account::isNotEqual(const Account &other) const {
 }
 
 bool Account::isEmpty() const {
-    return accId == 0L && balance == 0 && (!std::strcmp(cusName, constants::utils::TXT_DEFAULT));
+    return accId == 0L && balance == 0 && cusName.empty();
 }
 
 bool Account::isNotEmpty() const {

@@ -31,7 +31,7 @@ void MakeAccountFormViewModel::reset() {
 }
 
 bool MakeAccountFormViewModel::isLoaded() const {
-    if(accountInputDto.getAccountID()!= -1){
+    if(accountInputDto.getAccountID()!= 0){
         return true;
     }
     return false;

@@ -18,13 +18,13 @@ class Account: public Equatable<Account>{
 private:
     long accId;
     int balance;
-    char *cusName;
+    std::string cusName;
     virtual BaseReturnDto<int> withdraw(int money);
 protected:
     virtual Error deposit(int money);
 public:
     Account();
-    Account(long accId, int balance, const char *cusName);
+    Account(long accId, int balance, std::string cusName);
     Account(const Account& account);
     virtual ~Account();
 
@@ -32,7 +32,7 @@ public:
 
     virtual int getBalance() const;
 
-    virtual  char *getCusName() const;
+    virtual  std::string getCusName() const;
 
     void showAccInfo() const;
 

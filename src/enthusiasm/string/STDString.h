@@ -1,0 +1,6 @@
+#ifndef FIRSTCPP_STDSTRING _H
+#define FIRSTCPP_STDSTRING _H
+class STDString{
+};
+#endif // FIRSTCPP_STDSTRING _H
+
