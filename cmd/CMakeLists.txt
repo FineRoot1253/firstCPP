@@ -155,8 +155,12 @@ add_executable(enthusiasm_Functor_run enthusiasm/operator/Functor.cpp)
 add_executable(enthusiasm_SortFunctor_run enthusiasm/operator/SortFunctor.cpp)
 add_executable(enthusiasm_ConvToObject_run enthusiasm/operator/ConvToObject.cpp)
 add_executable(enthusiasm_ConvToPrimitive_run enthusiasm/operator/ConvToPrimitive.cpp)
-#add_executable(enthusiasm_STDString_run enthusiasm/string/STDString.cpp)
-#add_executable(enthusiasm_StringClass_run enthusiasm/string/StringClass.cpp)
+add_executable(enthusiasm_STDString_run enthusiasm/string/STDString.cpp)
+add_executable(enthusiasm_StringClass_run enthusiasm/string/StringClass.cpp)
+target_link_libraries(
+        enthusiasm_StringClass_run
+        Custom_String
+)
 #add_executable(enthusiasm_AddFunctionTemplate_run enthusiasm/template/AddFunctionTemplate.cpp)
 #add_executable(enthusiasm_TwoTypeAddFunction_run enthusiasm/template/TwoTypeAddFunction.cpp)
 #add_executable(enthusiasm_PrimitiveFunctionTemplate_run enthusiasm/template/PrimitiveFunctionTemplate.cpp)
