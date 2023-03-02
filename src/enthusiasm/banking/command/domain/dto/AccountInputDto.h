@@ -6,6 +6,7 @@
 #define FIRSTCPP_ACCOUNTINPUTDTO_H
 
 #include <iostream>
+#include <utility>
 #include "enthusiasm/banking/common/BankingMode.h"
 #include "enthusiasm/banking/common/constants.h"
 #include "AccountTypeInputDto.h"
@@ -16,39 +17,33 @@ class AccountInputDto {
 private:
     long accountID;
     int money;
-    char *customerName;
+    std::string customerName;
     AccountTypeInputDto accountType;
     CreditGradeInputDto creditGrade;
     double interestRatio;
 
 public:
     //FOR HIGH CREDIT
-    explicit AccountInputDto(const long& accountID, const int& money, const char *customerName,
+    explicit AccountInputDto(const long& accountID, const int& money, std::string  customerName,
                     const double &interestRatio, const CreditGradeInputDto &creditGrade)
             : accountID(accountID)
               , accountType(AccountTypeInputDto(2))
               , creditGrade(creditGrade)
               , money(money)
-              , interestRatio(interestRatio) {
-        this->customerName = new char[std::strlen(customerName) + 1];
-        std::strcpy(this->customerName, customerName);
+              , interestRatio(interestRatio)
+              , customerName(std::move(customerName)) {
     };
 
     //FOR NORMAL
-    explicit AccountInputDto(long accountID = 0L, int money = 0, const char *customerName = "",
+    explicit AccountInputDto(long accountID = 0L, int money = 0, std::string  customerName = "",
                     const double &interestRatio = 0.00)
             : accountID(accountID)
               , accountType(AccountTypeInputDto(1))
               , creditGrade(CreditGradeInputDto(1))
               , money(money)
-              , interestRatio(interestRatio) {
-        this->customerName = new char[std::strlen(customerName) + 1];
-        std::strcpy(this->customerName, customerName);
+              , interestRatio(interestRatio)
+              , customerName(std::move(customerName)){
     };
-
-    ~AccountInputDto() {
-        delete customerName;
-    }
 
 public:
     long getAccountID() const {
@@ -59,7 +54,7 @@ public:
         return money;
     }
 
-    const char *getCustomerName() const {
+    const std::string& getCustomerName() const {
         return customerName;
     }
 

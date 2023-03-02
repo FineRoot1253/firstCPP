@@ -18,7 +18,7 @@ public:
             : Account()
               , interestRatio() {};
 
-    NormalAccount(long accId, int balance, const char *cusName, double interestRatio)
+    NormalAccount(long accId, int balance, const std::string cusName, double interestRatio)
             : Account(accId, balance, cusName)
               , interestRatio(interestRatio) {};
 

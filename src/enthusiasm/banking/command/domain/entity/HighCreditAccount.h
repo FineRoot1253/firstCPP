@@ -18,7 +18,7 @@ private:
 public:
     HighCreditAccount():NormalAccount(),creditGrade(CreditGrade::C){};
 
-    HighCreditAccount(const long &accId, const int &balance, const char *cusName, const double &interestRatio,
+    HighCreditAccount(const long &accId, const int &balance, const std::string cusName, const double &interestRatio,
                       const CreditGrade &creditGrade)
             : NormalAccount(accId, balance, cusName, interestRatio)
               , creditGrade(creditGrade) {};
