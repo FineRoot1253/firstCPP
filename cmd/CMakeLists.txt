@@ -161,30 +161,30 @@ target_link_libraries(
         enthusiasm_StringClass_run
         Custom_String
 )
-#add_executable(enthusiasm_AddFunctionTemplate_run enthusiasm/template/AddFunctionTemplate.cpp)
-#add_executable(enthusiasm_TwoTypeAddFunction_run enthusiasm/template/TwoTypeAddFunction.cpp)
-#add_executable(enthusiasm_PrimitiveFunctionTemplate_run enthusiasm/template/PrimitiveFunctionTemplate.cpp)
-#add_executable(enthusiasm_NeedSpecialFunctionTemplate_run enthusiasm/template/NeedSpecialFunctionTemplate.cpp)
-#add_executable(enthusiasm_SpecialFunctionTemplate_run enthusiasm/template/SpecialFunctionTemplate.cpp)
-#add_executable(enthusiasm_PointClassTemplate_run enthusiasm/template/PointClassTemplate.cpp)
-#add_executable(enthusiasm_PointClassTemplateFuncDef_run enthusiasm/template/PointClassTemplateFuncDef.cpp)
-#add_executable(enthusiasm_PointMain_run enthusiasm/template/PointMain.cpp)
-#add_executable(enthusiasm_BoundArrayMain_run enthusiasm/template/BoundArrayMain.cpp)
-#target_link_libraries(
-#        enthusiasm_PointMain_run
-#        PointTemplate
-#)
-#target_link_libraries(
-#        enthusiasm_BoundArrayMain_run
-#        Point_Temp
-#)
-#add_executable(enthusiasm_PointTemplateFriendFunction_run enthusiasm/template/PointTemplateFriendFunction.cpp)
-#add_executable(enthusiasm_ClassTemplateSpecialization_run enthusiasm/template/ClassTemplateSpecialization.cpp)
-#add_executable(enthusiasm_ClassTemplatePartialSpecialization_run enthusiasm/template/ClassTemplatePartialSpecialization.cpp)
-#add_executable(enthusiasm_NonTypeTemplateParam_run enthusiasm/template/NonTypeTemplateParam.cpp)
-#add_executable(enthusiasm_TemplateParamDefaultValue_run enthusiasm/template/TemplateParamDefaultValue.cpp)
-#add_executable(enthusiasm_FunctionTemplateStaticVar_run enthusiasm/template/FunctionTemplateStaticVar.cpp)
-#add_executable(enthusiasm_ClassTemplateStaticMem_run enthusiasm/template/ClassTemplateStaticMem.cpp)
+add_executable(enthusiasm_AddFunctionTemplate_run enthusiasm/template/AddFunctionTemplate.cpp)
+add_executable(enthusiasm_TwoTypeAddFunction_run enthusiasm/template/TwoTypeAddFunction.cpp)
+add_executable(enthusiasm_PrimitiveFunctionTemplate_run enthusiasm/template/PrimitiveFunctionTemplate.cpp)
+add_executable(enthusiasm_NeedSpecialFunctionTemplate_run enthusiasm/template/NeedSpecialFunctionTemplate.cpp)
+add_executable(enthusiasm_SpecialFunctionTemplate_run enthusiasm/template/SpecialFunctionTemplate.cpp)
+add_executable(enthusiasm_PointClassTemplate_run enthusiasm/template/PointClassTemplate.cpp)
+add_executable(enthusiasm_PointClassTemplateFuncDef_run enthusiasm/template/PointClassTemplateFuncDef.cpp)
+add_executable(enthusiasm_PointMain_run enthusiasm/template/PointMain.cpp)
+add_executable(enthusiasm_BoundArrayMain_run enthusiasm/template/BoundArrayMain.cpp)
+target_link_libraries(
+        enthusiasm_PointMain_run
+        PointTemplate
+)
+target_link_libraries(
+        enthusiasm_BoundArrayMain_run
+        Point_Temp
+)
+add_executable(enthusiasm_PointTemplateFriendFunction_run enthusiasm/template/PointTemplateFriendFunction.cpp)
+add_executable(enthusiasm_ClassTemplateSpecialization_run enthusiasm/template/ClassTemplateSpecialization.cpp)
+add_executable(enthusiasm_ClassTemplatePartialSpecialization_run enthusiasm/template/ClassTemplatePartialSpecialization.cpp)
+add_executable(enthusiasm_NonTypeTemplateParam_run enthusiasm/template/NonTypeTemplateParam.cpp)
+add_executable(enthusiasm_TemplateParamDefaultValue_run enthusiasm/template/TemplateParamDefaultValue.cpp)
+add_executable(enthusiasm_FunctionTemplateStaticVar_run enthusiasm/template/FunctionTemplateStaticVar.cpp)
+add_executable(enthusiasm_ClassTemplateStaticMem_run enthusiasm/template/ClassTemplateStaticMem.cpp)
 #add_executable(enthusiasm_UnhandlingException_run enthusiasm/exception/UnhandlingException.cpp)
 #add_executable(enthusiasm_HandlingExceptionUseIf_run enthusiasm/exception/HandlingExceptionUseIf.cpp)
 #add_executable(enthusiasm_HandlingExceptionTryCatch_run enthusiasm/exception/HandlingExceptionTryCatch.cpp)
