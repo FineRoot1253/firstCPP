@@ -1,0 +1,13 @@
+project(test)
+include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
+add_subdirectory(ch1)
+add_subdirectory(ch2)
+add_subdirectory(ch3)
+add_subdirectory(ch4)
+add_subdirectory(enthusiasm/banking/command/domian/repository)
+add_subdirectory(enthusiasm/banking/command/domian/entity)
+add_subdirectory(enthusiasm/banking/command/service)
+add_subdirectory(enthusiasm/banking/common)
+add_subdirectory(notepad)
+
+enable_testing()
