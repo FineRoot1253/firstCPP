@@ -206,3 +206,6 @@ add_executable(enthusiasm_PolymorphismDynamicCasting_run enthusiasm/casting/Poly
 add_executable(enthusiasm_PolymorphicStableCasting_run enthusiasm/casting/PolymorphicStableCasting.cpp)
 add_executable(enthusiasm_DynamicBadCastRef_run enthusiasm/casting/DynamicBadCastRef.cpp)
 add_executable(enthusiasm_ReferenceAttribute_run enthusiasm/polymorphism/ReferenceAttribute.cpp)
+add_executable(enthusiasm_LinearSearch_run enthusiasm/algorithm/LinearSearch.cpp)
+add_executable(enthusiasm_BinarySearch_run enthusiasm/algorithm/BinarySearch.cpp)
+add_executable(enthusiasm_BSWorstOpCount_run enthusiasm/algorithm/BSWorstOpCount.cpp)
