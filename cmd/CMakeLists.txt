@@ -206,3 +206,17 @@ add_executable(enthusiasm_PolymorphismDynamicCasting_run enthusiasm/casting/Poly
 add_executable(enthusiasm_PolymorphicStableCasting_run enthusiasm/casting/PolymorphicStableCasting.cpp)
 add_executable(enthusiasm_DynamicBadCastRef_run enthusiasm/casting/DynamicBadCastRef.cpp)
 add_executable(enthusiasm_ReferenceAttribute_run enthusiasm/polymorphism/ReferenceAttribute.cpp)
+add_executable(enthusiasm_LinearSearch_run enthusiasm/algorithm/LinearSearch.cpp)
+add_executable(enthusiasm_BinarySearch_run enthusiasm/algorithm/BinarySearch.cpp)
+add_executable(enthusiasm_BSWorstOpCount_run enthusiasm/algorithm/BSWorstOpCount.cpp)
+add_executable(enthusiasm_RecursiveFunc_run enthusiasm/recursive/RecursiveFunc.cpp)
+add_executable(enthusiasm_RecursiveFactorial_run enthusiasm/recursive/RecursiveFactorial.cpp)
+add_executable(enthusiasm_FibonacciFunc_run enthusiasm/recursive/FibonacciFunc.cpp)
+add_executable(enthusiasm_RecursiveBinarySearch_run enthusiasm/recursive/RecursiveBinarySearch.cpp)
+add_executable(enthusiasm_HanoiTower_run enthusiasm/recursive/HanoiTower.cpp)
+add_executable(enthusiasm_ListMain_run enthusiasm/linked_list/ListMain.cpp)
+add_executable(enthusiasm_PointListMain_run enthusiasm/linked_list/PointListMain.cpp)
+target_link_libraries(
+        enthusiasm_PointListMain_run
+        Point_For_Linked_List
+)
