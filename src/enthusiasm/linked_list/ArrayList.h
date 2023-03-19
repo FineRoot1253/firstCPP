@@ -7,30 +7,8 @@
 
 #include <memory>
 #include <iostream>
-
+#include "enthusiasm/linked_list/Result.h"
 namespace Collection{
-    template <class T>
-    class ArrayListResult{
-    private:
-        T data;
-        bool errorState;
-    public:
-        ArrayListResult(const T& data, bool errorState):data(data), errorState(errorState){
-        }
-
-        bool isError();
-        T getData() const;
-    };
-
-    template <class T>
-    bool ArrayListResult<T>::isError(){
-        return errorState;
-    }
-    template <class T>
-    T ArrayListResult<T>::getData() const{
-        return data;
-    }
-
     template <class T>
     class ArrayList{
     private:
@@ -66,15 +44,15 @@ namespace Collection{
 
         void insert(const T& data);
 
-        ArrayListResult<T> first();
+        Result<T> first();
 
-        ArrayListResult<T> current() const;
+        Result<T> current() const;
 
-        ArrayListResult<T> next();
+        Result<T> next();
 
         bool isDone() const;
 
-        ArrayListResult<T> remove();
+        Result<T> remove();
 
         int count() const;
     };
@@ -104,29 +82,29 @@ namespace Collection{
     }
 
     template <class T>
-    ArrayListResult<T> ArrayList<T>::first(){
+    Result<T> ArrayList<T>::first(){
 
         if(currentCapacity== 0){
-            return ArrayListResult<T>(T(),true);
+            return Result<T>(T(),true);
         }
         currentPosition = 0;
-        return ArrayListResult<T>(array[0],false);
+        return Result<T>(array[0],false);
     }
 
     template <class T>
-    ArrayListResult<T> ArrayList<T>::next(){
+    Result<T> ArrayList<T>::next(){
         if(currentCapacity == currentPosition){
-            return ArrayListResult<T>(T(),true);
+            return Result<T>(T(),true);
         }
-        return ArrayListResult<T>(array[currentPosition++],false);
+        return Result<T>(array[currentPosition++],false);
     }
 
     template <class T>
-    ArrayListResult<T> ArrayList<T>::current() const{
+    Result<T> ArrayList<T>::current() const{
         if(currentCapacity == currentPosition){
-            return ArrayListResult<T>(T(),true);
+            return Result<T>(T(),true);
         }
-        return ArrayListResult<T>(array[currentPosition],false);
+        return Result<T>(array[currentPosition],false);
     }
 
     template <class T>
@@ -135,7 +113,7 @@ namespace Collection{
     }
 
     template <class T>
-    ArrayListResult<T> ArrayList<T>::remove(){
+    Result<T> ArrayList<T>::remove(){
         T result = array[currentPosition];
         // push elements to forward
         if(currentPosition != currentCapacity -1){
@@ -147,7 +125,7 @@ namespace Collection{
         }
         --currentPosition;
         --currentCapacity;
-        return ArrayListResult<T>(result, false);
+        return Result<T>(result, false);
     }
 
     template <class T>
