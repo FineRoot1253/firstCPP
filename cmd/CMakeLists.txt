@@ -220,3 +220,7 @@ target_link_libraries(
         enthusiasm_PointListMain_run
         Point_For_Linked_List
 )
+add_executable(enthusiasm_ArrayRead_run enthusiasm/linked_list/ArrayRead.cpp)
+add_executable(enthusiasm_LinkedRead_run enthusiasm/linked_list/LinkedRead.cpp)
+add_executable(enthusiasm_DLinkedListMain_run enthusiasm/linked_list/DLinkedListMain.cpp)
+add_executable(enthusiasm_DLinkedListSortMain_run enthusiasm/linked_list/DLinkedListSortMain.cpp)
