@@ -6,51 +6,10 @@
 #define FIRSTCPP_DLINKEDLIST_H
 
 #include "enthusiasm/linked_list/Result.h"
+#include "enthusiasm/linked_list/Node.h"
 #include <memory>
 
 namespace Collection {
-    template <class T>
-    class Node {
-    private:
-        T data;
-        Node *next;
-    public:
-        Node()
-                : data(T()), next(nullptr) {};
-
-        Node(T data, Node *next)
-                : data(data), next(next) {};
-
-        Node(const Node &ref)
-                : data(ref.data)
-                  , next(ref.next) {
-        }
-
-        Node &operator=(const Node &ref) {
-            data = ref.data;
-            next = ref.next;
-            return *this;
-        }
-
-        T getData() const;
-
-        Node *getNext() const;
-
-//        void setNext(Node* next){
-//            this->next = next;
-//        }
-    };
-
-    template<class T>
-    T Node<T>::getData() const {
-        return data;
-    }
-
-    template<class T>
-    Node<T> *Node<T>::getNext() const {
-        return next;
-    }
-
     template<class T>
     class DLinkedList {
     private:
