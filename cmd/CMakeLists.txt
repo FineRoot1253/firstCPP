@@ -227,3 +227,15 @@ add_executable(enthusiasm_DLinkedListSortMain_run enthusiasm/linked_list/DLinked
 add_executable(enthusiasm_CLinkedListMain_run enthusiasm/linked_list/CLinkedListMain.cpp)
 add_executable(enthusiasm_DBLinkedListMain_run enthusiasm/linked_list/DBLinkedListMain.cpp)
 add_executable(enthusiasm_DBDLinkedListMain_run enthusiasm/linked_list/DBDLinkedListMain.cpp)
+add_executable(enthusiasm_ArrayBaseStack_run enthusiasm/stack/ArrayBaseStack.cpp)
+add_executable(enthusiasm_ListBaseStack_run enthusiasm/stack/ListBaseStack.cpp)
+add_executable(enthusiasm_InfixToPostfix_run enthusiasm/stack/InfixToPostfix.cpp)
+add_executable(enthusiasm_PostCalculatorMain_run enthusiasm/stack/PostCalculatorMain.cpp)
+target_link_libraries(
+        enthusiasm_InfixToPostfix_run
+        ExpressionConvertor
+)
+target_link_libraries(
+        enthusiasm_PostCalculatorMain_run
+        ExpressionConvertor
+)
