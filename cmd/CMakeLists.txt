@@ -239,3 +239,8 @@ target_link_libraries(
         enthusiasm_PostCalculatorMain_run
         ExpressionConvertor
 )
+add_executable(enthusiasm_CircularQueue_run enthusiasm/queue/CircularQueue.cpp)
+add_executable(enthusiasm_ListBaseQueue_run enthusiasm/queue/ListBaseQueue.cpp)
+add_executable(enthusiasm_HamburgerSim_run enthusiasm/queue/HamburgerSim.cpp)
+
+add_executable(enthusiasm_Deque_run enthusiasm/queue/Deque.cpp)
