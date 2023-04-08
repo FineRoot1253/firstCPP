@@ -244,3 +244,6 @@ add_executable(enthusiasm_ListBaseQueue_run enthusiasm/queue/ListBaseQueue.cpp)
 add_executable(enthusiasm_HamburgerSim_run enthusiasm/queue/HamburgerSim.cpp)
 
 add_executable(enthusiasm_Deque_run enthusiasm/queue/Deque.cpp)
+add_executable(broadcastUV_Clang_ch1_hellosky_run broadcastUV/Clang/ch1/hellohong.c)
+add_executable(broadcastUV_Clang_ch1_hello_run broadcastUV/Clang/ch1/hello.c)
+add_executable(broadcastUV_Clang_ch1_multiplex_run broadcastUV/Clang/ch1/multiply.c)
