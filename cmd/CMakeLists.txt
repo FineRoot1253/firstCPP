@@ -250,3 +250,6 @@ add_executable(broadcastUV_Clang_ch1_multiply_run broadcastUV/Clang/ch1/multiply
 add_executable(broadcastUV_Clang_ch1_sizeof_run broadcastUV/Clang/ch2/sizeof.c)
 add_executable(broadcastUV_Clang_ch1_circle_area_run broadcastUV/Clang/ch2/circle_area.c)
 add_executable(broadcastUV_Clang_ch1_exam2-3_run broadcastUV/Clang/ch2/exam2-3.c broadcastUV/Clang/ch2/exam2-3.h)
+add_executable(enthusiasm_BinaryTree_run enthusiasm/tree/BinaryTree.cpp)
+add_executable(enthusiasm_BinaryTree2_run enthusiasm/tree/BinaryTree2.cpp)
+add_executable(enthusiasm_ExpressionTree_run enthusiasm/tree/ExpressionTree.cpp)
