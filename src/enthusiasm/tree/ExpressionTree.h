@@ -49,12 +49,11 @@ namespace Collection{
 
         ExpressionTree::ExpressionTree(ExpressionTree &&ref) {
             treeNode = ref.treeNode;
-            delete ref.treeNode;
+            ref.treeNode = nullptr;
         }
 
         ExpressionTree &ExpressionTree::operator=(const ExpressionTree &ref) {
             treeNode = ref.treeNode;
-            delete ref.treeNode;
             return *this;
         }
 

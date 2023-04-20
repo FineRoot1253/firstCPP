@@ -253,3 +253,6 @@ add_executable(broadcastUV_Clang_ch1_exam2-3_run broadcastUV/Clang/ch2/exam2-3.c
 add_executable(enthusiasm_BinaryTree_run enthusiasm/tree/BinaryTree.cpp)
 add_executable(enthusiasm_BinaryTree2_run enthusiasm/tree/BinaryTree2.cpp)
 add_executable(enthusiasm_ExpressionTree_run enthusiasm/tree/ExpressionTree.cpp)
+add_executable(enthusiasm_SimpleHeap_run enthusiasm/heap/SimpleHeap.cpp)
+add_executable(enthusiasm_UsefulHeap_run enthusiasm/heap/UsefulHeap.cpp)
+add_executable(enthusiasm_PriorityQueue_run enthusiasm/priority_queue/PriorityQueue.cpp)
