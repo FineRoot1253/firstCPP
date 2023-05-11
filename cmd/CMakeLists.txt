@@ -267,3 +267,7 @@ add_executable(enthusiasm_InterpolationSearch_run enthusiasm/search/Interpolatio
 add_executable(enthusiasm_BinarySearchTree_run enthusiasm/search/BinarySearchTree.cpp)
 add_executable(enthusiasm_BinarySearchTree2_run enthusiasm/search/BinarySearchTree2.cpp)
 add_executable(enthusiasm_BinarySearchTree3_run enthusiasm/search/BinarySearchTree3.cpp)
+add_executable(enthusiasm_UnderstandTable_run enthusiasm/hash_table/UnderstandTable.cpp)
+add_executable(enthusiasm_TableHashFunction_run enthusiasm/hash_table/TableHashFunction.cpp)
+add_executable(enthusiasm_Table_run enthusiasm/hash_table/Table.cpp)
+add_executable(enthusiasm_Table2_run enthusiasm/hash_table/Table2.cpp)
