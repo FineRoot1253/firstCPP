@@ -95,7 +95,9 @@ namespace Collection {
     DLinkedList<T>::~DLinkedList() {
         delete headNode;
         delete currentNode;
-        delete beforeNode;
+        if(headNode != beforeNode){
+            delete beforeNode;
+        }
     }
 
     template <class T>
