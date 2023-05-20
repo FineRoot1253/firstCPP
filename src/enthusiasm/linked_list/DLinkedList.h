@@ -65,11 +65,23 @@ namespace Collection {
 
     template <class T>
     DLinkedList<T>::DLinkedList(const DLinkedList<T> &ref)
-            : headNode(ref.headNode)
-              , currentNode(ref.currentNode)
-              , beforeNode(ref.beforeNode)
-              , counts(ref.counts)
-              , comp(ref.comp) {
+    : counts(ref.counts)
+    , comp(ref.comp)
+    , currentNode(nullptr)
+    , beforeNode(nullptr){
+        headNode = new Node<T>(ref.headNode->getData(), nullptr);
+        Node<T>* currentRefNode = ref.headNode->getNext();
+        Node<T>* tailNode = headNode->getNext();
+        while (currentRefNode!= nullptr){
+            Node <T> * newTailNode= new Node<T>(currentRefNode->getData(), nullptr);
+            if(tailNode == nullptr){
+                *headNode = Node<T>(headNode->getData(), newTailNode);
+            }else{
+                *tailNode =  Node<T>(tailNode->getData(), newTailNode);
+            }
+            tailNode = newTailNode;
+            currentRefNode = currentRefNode->getNext();
+        }
     }
 
     template <class T>
@@ -83,11 +95,34 @@ namespace Collection {
 
     template <class T>
     DLinkedList<T> &DLinkedList<T>::operator=(const DLinkedList<T> &ref) {
-        headNode = ref.headNode;
-        currentNode = ref.currentNode;
-        beforeNode = ref.beforeNode;
+        if (this == &ref) {
+            return *this;
+        }
         counts = ref.counts;
         comp = ref.comp;
+
+        Node<T>* currentRefNode1 = headNode;
+        while (currentRefNode1 != nullptr) {
+            Node<T>* nextNode = currentRefNode1->getNext();
+            delete currentRefNode1;
+            currentRefNode1 = nextNode;
+        }
+
+        headNode = new Node<T>(ref.headNode->getData(), nullptr);
+        Node<T>* currentRefNode = ref.headNode->getNext();
+        Node<T>* tailNode = headNode->getNext();
+        while (currentRefNode!= nullptr){
+            Node <T> * newTailNode= new Node<T>(currentRefNode->getData(), nullptr);
+            if(tailNode == nullptr){
+                *headNode = Node<T>(headNode->getData(), newTailNode);
+            }else{
+                *tailNode =  Node<T>(tailNode->getData(), newTailNode);
+            }
+            tailNode = newTailNode;
+            currentRefNode = currentRefNode->getNext();
+        }
+        currentNode = nullptr;
+        beforeNode = nullptr;
         return *this;
     }
 
@@ -172,12 +207,10 @@ namespace Collection {
     template <class T>
     Result<T> DLinkedList<T>::remove() {
         Node<T> *tempNode1 = currentNode;
-        Node<T> *tempNode2 = beforeNode;
         Result<T> result = Result<T>(currentNode->getData(), false);
-        beforeNode = new Node<T>(beforeNode->getData(), currentNode->getNext());
+        *beforeNode = Node<T>(beforeNode->getData(), currentNode->getNext());
         currentNode = beforeNode;
         delete tempNode1;
-        delete tempNode2;
         --counts;
         return result;
     }
