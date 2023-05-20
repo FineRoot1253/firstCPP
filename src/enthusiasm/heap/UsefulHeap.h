@@ -63,7 +63,7 @@ namespace Collection {
         ArrayBaseHeap<T>::ArrayBaseHeap(const ArrayBaseHeap &ref)
                 : counts(ref.counts)
                   , priorityCompareBetween(ref.priorityCompareBetween) {
-            for (int i = 0; i < ref.counts; ++i) {
+            for (int i = 0; i < ref.counts+1; ++i) {
                 array[i] = ref.array[i];
             }
         }
@@ -73,7 +73,7 @@ namespace Collection {
             counts = ref.counts;
             priorityCompareBetween = ref.priorityCompareBetween;
             ref.priorityCompareBetween = nullptr;
-            for (int i = 0; i < ref.counts; ++i) {
+            for (int i = 0; i < ref.counts+1; ++i) {
                 array[i] = std::move(ref.array[i]);
             }
         }
@@ -82,7 +82,7 @@ namespace Collection {
         ArrayBaseHeap<T> &ArrayBaseHeap<T>::operator=(const ArrayBaseHeap &ref) {
             counts = ref.counts;
             priorityCompareBetween = ref.priorityCompareBetween;
-            for (int i = 0; i < ref.counts; ++i) {
+            for (int i = 0; i < ref.counts+1; ++i) {
                 array[i] = ref.array[i];
             }
             return *this;
@@ -93,7 +93,7 @@ namespace Collection {
             counts = ref.counts;
             priorityCompareBetween = ref.priorityCompareBetween;
             ref.priorityCompareBetween = nullptr;
-            for (int i = 0; i < ref.counts; ++i) {
+            for (int i = 0; i < ref.counts+1; ++i) {
                 array[i] = ref.array[i];
             }
             return *this;

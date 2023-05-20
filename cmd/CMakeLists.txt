@@ -271,3 +271,7 @@ add_executable(enthusiasm_UnderstandTable_run enthusiasm/hash_table/UnderstandTa
 add_executable(enthusiasm_TableHashFunction_run enthusiasm/hash_table/TableHashFunction.cpp)
 add_executable(enthusiasm_Table_run enthusiasm/hash_table/Table.cpp)
 add_executable(enthusiasm_Table2_run enthusiasm/hash_table/Table2.cpp)
+add_executable(enthusiasm_ALGraph_run enthusiasm/graph/ALGraph.cpp)
+add_executable(enthusiasm_ALGraphDFS_run enthusiasm/graph/ALGraphDFS.cpp)
+add_executable(enthusiasm_ALGraphBFS_run enthusiasm/graph/ALGraphBFS.cpp)
+add_executable(enthusiasm_ALGraphKruskal_run enthusiasm/graph/ALGraphKruskal.cpp)
