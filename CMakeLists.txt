@@ -3,13 +3,13 @@ project(firstCPP)
 
 set(CMAKE_CXX_STANDARD 14)
 
-include_directories(src)
-include_directories(lib)
+include_directories(${PROJECT_SOURCE_DIR}/src)
+include_directories(${PROJECT_SOURCE_DIR}/lib)
 
-add_subdirectory(cmd)
-add_subdirectory(src)
-add_subdirectory(lib)
-add_subdirectory(test)
-add_subdirectory(lib/googletest)
+add_subdirectory(${PROJECT_SOURCE_DIR}/cmd)
+add_subdirectory(${PROJECT_SOURCE_DIR}/src)
+add_subdirectory(${PROJECT_SOURCE_DIR}/lib)
+add_subdirectory(${PROJECT_SOURCE_DIR}/test)
+add_subdirectory(${PROJECT_SOURCE_DIR}/lib/googletest)
 
 
